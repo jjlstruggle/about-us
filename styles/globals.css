@@ -17,6 +17,6 @@ a {
 
 .flex-center-center {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
