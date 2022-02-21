@@ -1,0 +1,15 @@
+.frame {
+  position: relative;
+  background: #080808;
+}
+.vector {
+  position: absolute;
+  width: 382px;
+  left: 412px;
+}
+.font1,
+.font2 {
+  position: absolute;
+  left: 603px;
+  color: #fff;
+}

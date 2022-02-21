@@ -2,6 +2,7 @@
   width: 200vw;
   height: 100vh;
   position: relative;
+  transition: all 0.6s linear;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     linear-gradient(
       284.24deg,
@@ -25,7 +26,6 @@
   border-end-end-radius: 50px;
   border-start-start-radius: 50px;
   color: #aba5a5;
-  margin-left: 64px;
   position: relative;
   transition: all 0.6s linear;
 }
@@ -81,7 +81,7 @@
 }
 
 .line {
-  width: 100%;
+  width: 2211px;
   height: 1px;
   background-color: #8172de;
   position: absolute;
@@ -93,4 +93,22 @@
   transition: all 0.7s ease;
   background-color: #000;
   background-size: 100% 100%;
+  left: 0;
+}
+.square,
+.square2 {
+  opacity: 0.4;
+  width: 362px;
+  position: absolute;
+}
+.square {
+  left: 812px;
+}
+.square2 {
+  left: 2252px;
+}
+.heart {
+  position: absolute;
+  width: 33px;
+  left: 2178px;
 }

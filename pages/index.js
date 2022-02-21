@@ -40,6 +40,8 @@ import yunwei from "../assets/img/frame6/yunwei.png";
 import web from "../assets/img/frame6/web.png";
 import vector4 from "../assets/img/frame7/Vector 43.png";
 import Frame8 from "../components/frame8";
+import Frame9 from "../components/frame9";
+import Frame10 from "../components/frame10";
 
 /*
  *
@@ -911,7 +913,9 @@ export default function Home() {
           <Image src={square}></Image>
         </div>
       </div>
-      <Frame8 />
+      <Frame8 vh={vh} />
+      <Frame9 vh={vh} />
+      <Frame10 vh={vh} />
     </div>
   );
 }
