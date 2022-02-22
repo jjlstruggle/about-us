@@ -42,6 +42,7 @@ import vector4 from "../assets/img/frame7/Vector 43.png";
 import Frame8 from "../components/frame8";
 import Frame9 from "../components/frame9";
 import Frame10 from "../components/frame10";
+import Frame11 from "../components/frame11";
 
 /*
  *
@@ -916,6 +917,7 @@ export default function Home() {
       <Frame8 vh={vh} />
       <Frame9 vh={vh} />
       <Frame10 vh={vh} />
+      <Frame11 vh={vh} />
     </div>
   );
 }
