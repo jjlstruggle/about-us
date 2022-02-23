@@ -1,0 +1,13 @@
+.frame1_bar {
+  padding: 0 120px;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+}
+.logo {
+  width: 243px;
+}
+.frame1_nav div {
+  color: #fafafa;
+  margin: 0 30px;
+  font-size: 16px;
+}

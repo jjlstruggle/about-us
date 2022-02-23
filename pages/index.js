@@ -55,7 +55,7 @@ export default function Home() {
 
   useEffect(() => {
     const body = document.querySelector("body");
-    setVh(720 / body.clientHeight);
+    setVh(body.clientHeight / 720);
   }, []);
 
   const createNav = () => {
@@ -745,7 +745,6 @@ export default function Home() {
         >
           我们的部门！
         </div>
-
         <div
           className={styles.box2}
           style={{

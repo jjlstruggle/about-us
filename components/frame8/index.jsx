@@ -49,7 +49,7 @@ const Event = ({
         : styles.event + " event"
     }
     style={{
-      height: 198 * vh,
+      minHeight: 198 * vh,
       marginTop: 243 * vh,
       transform: `translateY(${select === index ? 316 - 243 : 0}px)`,
       marginLeft: marginLeft * vw,

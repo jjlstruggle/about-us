@@ -102,7 +102,7 @@ let canvas,
 let draw = false;
 let selectIndex = 0;
 let yearArr = data.map((item) => item.year);
-console.log(yearArr);
+
 export default function Frame10({ vh }) {
   const [select, setSelect] = useState(yearArr[yearArr.length / 2]);
   const [member, setMember] = useState([]);
