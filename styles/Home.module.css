@@ -1,7 +1,3 @@
-.home {
-  height: 100vh;
-  overflow: hidden auto;
-}
 .frame1 {
   height: 100vh;
   background: url(../assets/img/frame1_back.png) center no-repeat;
@@ -141,7 +137,6 @@
   width: 440px;
   font-size: 16px;
   color: #c4c4c4;
-  font-family: pingfang-regular;
   line-height: 24px;
 }
 .title1 {

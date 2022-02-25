@@ -1,13 +1,17 @@
 .frame1_bar {
   padding: 0 120px;
-  justify-content: space-between;
-  background-color: #f9f9f9;
+  z-index: 1;
+  justify-content: space-between !important;
+  width: 100%;
+  position: absolute;
 }
 .logo {
   width: 243px;
+  display: flex;
+  align-items: center;
 }
 .frame1_nav div {
-  color: #fafafa;
   margin: 0 30px;
   font-size: 16px;
+  cursor: pointer;
 }

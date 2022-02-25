@@ -1,7 +1,5 @@
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
-import logo from "../assets/img/logo.png";
-import leftWind from "../assets/img/zuobianyun.png";
 import dizou from "../assets/img/dizuo.png";
 import quanquan from "../assets/img/quanquan.png";
 import juanjuan from "../assets/img/juanjuan.png";
@@ -15,7 +13,7 @@ import banzi from "../assets/img/banzi.png";
 import yun from "../assets/img/youshangyun.png";
 import youxia from "../assets/img/youxia.png";
 import ball2 from "../assets/img/ball2.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import font from "../assets/img/frame2/We are Redrocker.png";
 import star1 from "../assets/img/frame2/Star 1.png";
 import star2 from "../assets/img/frame2/Star 2.png";
@@ -43,21 +41,14 @@ import Frame8 from "../components/frame8";
 import Frame9 from "../components/frame9";
 import Frame10 from "../components/frame10";
 import Frame11 from "../components/frame11";
-
 /*
  *
  * about-us首页
  */
 
-export default function Home() {
-  const [vh, setVh] = useState(0);
+export default function Home({ vh }) {
   const [choose, setChoose] = useState(0);
-
-  useEffect(() => {
-    const body = document.querySelector("body");
-    setVh(body.clientHeight / 720);
-  }, []);
-
+  const [mode, setMode] = useState("default");
   const createNav = () => {
     const navs = [];
     for (let i = 0; i < 5; i++) {
@@ -77,19 +68,6 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <div className={styles.frame1}>
-        <div className={styles.leftWind}>
-          <Image src={leftWind}></Image>
-        </div>
-        <div className={styles.frame1_bar + " flex-center-center"}>
-          <div className={styles.logo}>
-            <Image src={logo}></Image>
-          </div>
-          <div className={styles.frame1_nav + " flex-center-center"}>
-            <div>首页</div>
-            <div>关于我们</div>
-            <div>加入我们</div>
-          </div>
-        </div>
         <div
           className={styles.diZuo}
           style={{

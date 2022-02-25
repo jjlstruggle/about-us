@@ -23,10 +23,21 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: pingfang-regular;
+}
+
+#app {
+  position: relative;
+  overflow: hidden auto;
+  height: 100vh;
 }
 
 .flex-center-center {
@@ -36,31 +47,40 @@ a {
 }
 
 .font1 {
-  font-family: pingfang-regular;
   font-size: 14px;
   line-height: 20px;
 }
 
 .font2 {
-  font-family: pingfang-regular;
   font-weight: 700;
   font-size: 24px;
   line-height: 34px;
 }
 
 .font3 {
-  font-family: pingfang-regular;
   font-weight: 700;
   font-size: 36px;
   line-height: 50px;
 }
 
 .font4 {
-  font-family: pingfang-regular;
   font-size: 16px;
   line-height: 24px;
 }
 
+.font5 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
 .cannot_see {
   visibility: hidden;
+}
+
+li.slick-active {
+  width: 25px !important;
+  height: 10px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 17px !important;
 }
