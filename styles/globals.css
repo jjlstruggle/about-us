@@ -74,6 +74,12 @@ li {
   font-weight: 700;
 }
 
+.font6 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
 .cannot_see {
   visibility: hidden;
 }
