@@ -1,0 +1,22 @@
+.frame {
+  background: linear-gradient(0deg, #080808, #080808), #e2e2e2;
+  background-size: 100% 100%;
+  position: relative;
+}
+.box {
+  position: absolute;
+  width: 362px;
+  left: 634px;
+}
+.font1 {
+  color: #fff;
+  position: absolute;
+  width: 48px;
+  left: 599px;
+}
+.font2 {
+  color: #fff;
+  position: absolute;
+  left: 599px;
+  min-width: 192px;
+}

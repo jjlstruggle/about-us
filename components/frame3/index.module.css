@@ -1,0 +1,26 @@
+.frame {
+  background: #080808;
+  background-size: 100% 100%;
+  position: relative;
+}
+.box {
+  width: 449px;
+  margin: 0 auto;
+  position: relative;
+}
+.vector2 {
+  width: 122px;
+  position: absolute;
+}
+.font {
+  width: 72px;
+  color: #fff;
+  position: absolute;
+  left: 221px;
+}
+.font1 {
+  width: 228px;
+  left: 221px;
+  position: absolute;
+  color: #fff;
+}

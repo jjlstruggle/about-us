@@ -36,7 +36,7 @@ li {
 
 #app {
   position: relative;
-  overflow: hidden auto;
+  overflow: hidden;
   height: 100vh;
 }
 

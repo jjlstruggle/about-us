@@ -1,0 +1,15 @@
+.box {
+  width: 190px;
+  margin-right: 8px;
+}
+.frame {
+  background: #080808;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+.box2 {
+  width: 115px;
+  margin-left: 28px;
+}

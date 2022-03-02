@@ -1,7 +1,6 @@
 import styles from "../styles/index.module.css";
 import Slider from "react-slick";
 import Image from "next/image";
-
 import p from "../assets/img/about/preview (1).jpg";
 import p1 from "../assets/img/about/preview (2).jpg";
 import p2 from "../assets/img/about/preview.jpg";
