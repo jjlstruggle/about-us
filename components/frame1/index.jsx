@@ -16,16 +16,99 @@ import ball2 from "../../assets/img/ball2.png";
 import yun2 from "../../assets/img/zuobianyun.png";
 import { useEffect, useRef } from "react";
 import anime from "animejs";
+import debonce from "../../util/debonce";
+let app,
+  body,
+  $vh = 0,
+  $slider,
+  current = 0;
 
-export default function Frame1({ vh }) {
+const fn = debonce((e) => {
+  if (e.wheelDelta < 0) {
+    if (current === 9) {
+      app.scrollTop += 516 * $vh;
+      current++;
+      return;
+    } else if (current > 9) {
+      return;
+    }
+    current++;
+  } else if (e.wheelDelta > 0) {
+    if (current === 10) {
+      current = 9;
+      app.scrollTop -= 516 * $vh;
+      return;
+    } else if (current === 0) {
+      current = -1;
+      app.scrollTop = 0;
+      body.removeEventListener("wheel", wheel);
+      return;
+    }
+    current--;
+  }
+  $slider.slickGoTo(current);
+}, 800);
+
+const wheel = (e) => {
+  fn(e);
+};
+
+export default function Frame1({ vh, slider }) {
   const $ban = useRef(null);
   const $yes = useRef(null);
   const $juanjuan = useRef(null);
   const $square = useRef(null);
   const $frame = useRef(null);
+
   useEffect(() => {
+    $slider = slider.current;
     if (vh) {
-      let app = document.querySelector("#app");
+      $vh = vh;
+      $yes.current.onclick = () => {
+        current = 0;
+        anime({
+          targets: $ban.current,
+          translateX: 9999,
+        });
+        anime({
+          targets: $juanjuan.current,
+          translateX: -9999,
+        });
+        anime({
+          targets: $square.current,
+          translateY: 9999,
+        });
+        anime({
+          targets: $frame.current,
+          scale: 2,
+          opacity: 0,
+        });
+        setTimeout(() => {
+          anime({
+            targets: $ban.current,
+            translateX: 0,
+          });
+          anime({
+            targets: $juanjuan.current,
+            translateX: 0,
+          });
+          anime({
+            targets: $square.current,
+            translateY: 0,
+          });
+          anime({
+            targets: $frame.current,
+            scale: 1,
+            opacity: 1,
+          });
+          if (!app || !body) {
+            app = document.querySelector("#app");
+            body = document.querySelector("body");
+          }
+          app.scrollTop = 720 * vh;
+          body.addEventListener("wheel", wheel);
+        }, 1000);
+      };
       setTimeout(() => {
         anime({
           targets: $ban.current,
@@ -39,34 +122,6 @@ export default function Frame1({ vh }) {
           delay: 200,
         });
       }, 500);
-      $yes.current.onclick = () => {
-        anime({
-          targets: $ban.current,
-          translateX: 9999,
-          delay: 0,
-          duration: 10000,
-        });
-        anime({
-          targets: $juanjuan.current,
-          translateX: -9999,
-          delay: 0,
-        });
-        anime({
-          targets: $square.current,
-          translateY: 9999,
-          delay: 0,
-        });
-        anime({
-          targets: $frame.current,
-          scale: 2,
-          delay: 0,
-          opacity: 0,
-        });
-        setTimeout(() => {
-          console.dir(vh);
-          app.scrollTop = 720 * vh;
-        }, 1000);
-      };
     }
   }, [vh]);
   return (

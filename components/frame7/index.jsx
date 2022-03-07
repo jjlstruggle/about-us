@@ -5,7 +5,7 @@ import square from "../../assets/img/frame6/square.png";
 
 export default function Frame7({ vh }) {
   return (
-    <div className={styles.frame} style={{ height: 500 * vh }}>
+    <div className={styles.frame}>
       <div
         className={styles.box}
         style={{

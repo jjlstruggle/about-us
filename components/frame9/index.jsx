@@ -5,7 +5,7 @@ import vector from "../../assets/img/frame9/Vector 43.png";
 
 export default function Frame9({ vh }) {
   return (
-    <div className={styles.frame} style={{ height: 500 * vh }}>
+    <div className={styles.frame}>
       <div className={styles.vector} style={{ top: 91 * vh }}>
         <Image src={vector} />
       </div>

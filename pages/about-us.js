@@ -9,8 +9,10 @@ import Frame4 from "../components/frame4";
 import Frame3 from "../components/frame3";
 import Frame2 from "../components/frame2";
 import Frame1 from "../components/frame1";
+import Slider from "react-slick";
+import { useRef } from "react";
+
 const frames = [
-  Frame1,
   Frame2,
   Frame3,
   Frame4,
@@ -20,7 +22,6 @@ const frames = [
   Frame8,
   Frame9,
   Frame10,
-  Frame11,
 ];
 
 /*
@@ -29,11 +30,30 @@ const frames = [
  */
 
 export default function Home({ vh }) {
+  const slider = useRef(null);
+
+  const settings = {
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    vertical: true,
+    dots: false,
+    infinite: false,
+    draggable: false,
+    touchMove: false,
+    adaptiveHeight: true,
+    centerPadding: "0",
+  };
   return (
-    <div>
-      {frames.map((Item, index) => (
-        <Item vh={vh} key={index} />
-      ))}
-    </div>
+    <>
+      <Frame1 vh={vh} slider={slider} />
+      <Slider {...settings} ref={slider}>
+        {frames.map((Item, index) => (
+          <Item vh={vh} key={index} />
+        ))}
+      </Slider>
+      <Frame11 vh={vh} />
+    </>
   );
 }

@@ -34,6 +34,11 @@ li {
   font-family: pingfang-regular;
 }
 
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
 #app {
   position: relative;
   overflow: hidden;
@@ -89,4 +94,13 @@ li.slick-active {
   height: 10px !important;
   background: rgba(255, 255, 255, 0.5) !important;
   border-radius: 17px !important;
+}
+
+.slick-vertical .slick-slide {
+  border: 0 !important;
+}
+
+.slider {
+  height: 100vh;
+  display: flex;
 }

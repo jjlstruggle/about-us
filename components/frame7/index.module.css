@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   color: #fff;
+  height: 100vh;
 }
 .box2 {
   width: 115px;

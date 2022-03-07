@@ -2,6 +2,7 @@
   background: linear-gradient(0deg, #080808, #080808), #e2e2e2;
   background-size: 100% 100%;
   position: relative;
+  height: 100vh;
 }
 .box {
   position: absolute;

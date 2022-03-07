@@ -3,7 +3,7 @@ import vector3 from "../../assets/img/frame5/Vector 43 (1).png";
 import Image from "next/image";
 export default function Frame5({ vh }) {
   return (
-    <div className={styles.frame} style={{ height: 500 * vh }}>
+    <div className={styles.frame}>
       <div
         className={styles.font1 + " font2"}
         style={{

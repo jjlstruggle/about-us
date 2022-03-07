@@ -15,6 +15,7 @@ specifiers:
   react-slick: ^0.28.1
   react-waypoint: ^10.1.0
   slick-carousel: ^1.8.1
+  typed.js: ^2.0.12
 
 dependencies:
   animejs: registry.npmmirror.com/animejs/3.2.1
@@ -24,6 +25,7 @@ dependencies:
   react-slick: registry.npmmirror.com/react-slick/0.28.1_react-dom@17.0.2+react@17.0.2
   react-waypoint: registry.npmmirror.com/react-waypoint/10.1.0_react@17.0.2
   slick-carousel: registry.npmmirror.com/slick-carousel/1.8.1
+  typed.js: registry.npmmirror.com/typed.js/2.0.12
 
 devDependencies:
   '@babel/core': registry.npmmirror.com/@babel/core/7.17.0
@@ -3219,6 +3221,12 @@ packages:
     version: 0.20.2
     engines: {node: '>=10'}
     dev: true
+
+  registry.npmmirror.com/typed.js/2.0.12:
+    resolution: {integrity: sha512-lyACZh1cu+vpfYY3DG/bvsGLXXbdoDDpWxmqta10IQUdMXisMXOEyl+jos+YT9uBbzK4QaKYBjT3R0kTJO0Slw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typed.js/-/typed.js-2.0.12.tgz}
+    name: typed.js
+    version: 2.0.12
+    dev: false
 
   registry.npmmirror.com/unbox-primitive/1.0.1:
     resolution: {integrity: sha512-tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unbox-primitive/-/unbox-primitive-1.0.1.tgz}

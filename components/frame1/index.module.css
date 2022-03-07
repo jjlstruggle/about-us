@@ -4,7 +4,7 @@
   background-size: 100% 100%;
   position: relative;
   overflow: hidden;
-  transition: transform 1s linear, opacity 1s linear;
+  transition: transform 0.5s ease, opacity 1s linear;
   opacity: 1;
 }
 
@@ -44,7 +44,7 @@
   width: 1231px;
   position: absolute;
   left: 23px;
-  transition: transform 10s linear;
+  transition: transform 1s ease;
 }
 .ball {
   position: absolute;
@@ -55,7 +55,7 @@
   position: absolute;
   width: 1030px;
   left: 23px;
-  transition: transform 10s linear;
+  transition: transform 1s ease;
 }
 .zuoxia {
   position: absolute;

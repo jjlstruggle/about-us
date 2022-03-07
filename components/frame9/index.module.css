@@ -1,6 +1,7 @@
 .frame {
   position: relative;
   background: #080808;
+  height: 100vh;
 }
 .vector {
   position: absolute;

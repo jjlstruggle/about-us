@@ -1,6 +1,7 @@
 .frame {
   position: relative;
   background: #fafafa;
+  top: -5px;
 }
 .head {
   background-color: #000;

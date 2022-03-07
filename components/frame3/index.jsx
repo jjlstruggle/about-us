@@ -4,7 +4,7 @@ import vector2 from "../../assets/img/frame3/Vector 43.png";
 
 export default function Frame3({ vh }) {
   return (
-    <div className={styles.frame} style={{ height: 500 * vh }}>
+    <div className={styles.frame}>
       <div className={styles.box}>
         <span
           className={styles.font + " font2"}
