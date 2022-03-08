@@ -1,12 +1,43 @@
 import styles from "./index.module.css";
-import square from "../../assets/img/frame6/square.png";
-import chanpin from "../../assets/img/frame6/chanpin.png";
-import shijue from "../../assets/img/frame6/shijue.png";
-import yidong from "../../assets/img/frame6/yidongg.png";
-import yunwei from "../../assets/img/frame6/yunwei.png";
-import web from "../../assets/img/frame6/web.png";
+import square from "../../assets/网页动效/无限循环.webp";
+import chanpin from "../../assets/网页动效/产品.webp";
+import shijue from "../../assets/网页动效/视觉.webp";
+import yidong from "../../assets/网页动效/移动.webp";
+import yunwei from "../../assets/网页动效/SRE.webp";
+import web from "../../assets/网页动效/WEB.webp"
 import Image from "next/image";
+
+import { useEffect } from "react";
+
 export default function Frame6({ vh }) {
+
+  useEffect(() => {
+    const imgArr = document.getElementsByClassName(styles.frame)[0].querySelectorAll("img");
+
+    imgArr.forEach((item) => {
+      item.addEventListener("mouseover", () => {
+        switch (item.className) {
+          case "web":
+            item.src = web.src;
+          case "square":
+            item.src = square.src;
+          case "chanpin":
+            item.src = chanpin.src;
+          case "yidong":
+            item.src = yidong.src;
+          case "yunwei":
+            item.src = yunwei.src;
+          case "shijue":
+            item.src = shijue.src;
+        }
+
+      })
+    })
+
+
+
+  })
+
   return (
     <div className={styles.frame} style={{ paddingTop: 118 * vh }}>
       <div
@@ -19,7 +50,7 @@ export default function Frame6({ vh }) {
           className={styles.pic1}
           style={{ marginTop: 28 * vh, marginBottom: 13 * vh }}
         >
-          <Image src={chanpin}></Image>
+          <Image className="chanpin" src={chanpin}></Image>
         </div>
         <div
           className={styles.title2 + " font2"}
@@ -39,7 +70,7 @@ export default function Frame6({ vh }) {
           className={styles.pic2}
           style={{ marginTop: 20 * vh, marginBottom: 4 * vh }}
         >
-          <Image src={shijue}></Image>
+          <Image className="shijue" src={shijue}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}
@@ -62,7 +93,7 @@ export default function Frame6({ vh }) {
           className={styles.pic1}
           style={{ marginTop: 28 * vh, marginBottom: 16 * vh }}
         >
-          <Image src={yidong}></Image>
+          <Image className="yidong" src={yidong}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}
@@ -74,7 +105,7 @@ export default function Frame6({ vh }) {
       </div>
       <div className={styles.fragment2} style={{ height: 205 * vh }}></div>
       <div className={styles.square2}>
-        <Image src={square}></Image>
+        <Image className="square" src={square} style={{ height: 205 * vh  }}></Image>
       </div>
       <div
         className={styles.square}
@@ -86,7 +117,7 @@ export default function Frame6({ vh }) {
           className={styles.pic2}
           style={{ marginTop: 9 * vh, marginBottom: 8 * vh }}
         >
-          <Image src={web}></Image>
+          <Image className="web" src={web}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}
@@ -108,7 +139,7 @@ export default function Frame6({ vh }) {
           className={styles.pic1}
           style={{ marginTop: 28 * vh, marginBottom: 13 * vh }}
         >
-          <Image src={yunwei}></Image>
+          <Image className="yunwei" src={yunwei}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}

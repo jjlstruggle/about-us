@@ -2,17 +2,41 @@ import styles from "./index.module.css";
 import vector4 from "../../assets/img/frame7/Vector 43.png";
 import Image from "next/image";
 import square from "../../assets/img/frame6/square.png";
+import { useEffect, useRef } from "react";
+
 
 export default function Frame7({ vh }) {
+
+  const $body = useRef(null);
+  const $img = useRef(null);
+
+  useEffect(() => {
+    const container = $body.current.parentNode.parentNode;
+    const animation = new MutationObserver((mu, ob) => {
+      if (container.getAttribute('aria-hidden') === "false") {
+        $img.current.style.animation = "frame9_myAnimation__A18mr 2.04s steps(1) forwards"
+        console.log("DOM被更新了");
+      } else {
+        setTimeout(() => {
+          $img.current.style.animation = ""
+        }, 500)
+      }
+
+    })
+
+    animation.observe(container, { attributes: true, childList: true, subtree: true })
+
+  })
   return (
-    <div className={styles.frame}>
+    <div className={styles.frame} ref={$body}>
       <div
         className={styles.box}
         style={{
           marginTop: 117 * vh,
         }}
       >
-        <Image src={vector4}></Image>
+        {/* <Image src={vector4}></Image> */}
+        <div className={styles.mySprite} ref={$img}></div>
       </div>
       <div
         style={{

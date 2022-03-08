@@ -62,6 +62,7 @@ export default function Frame1({ vh, slider }) {
 
   useEffect(() => {
     $slider = slider.current;
+    
     if (vh) {
       $vh = vh;
       $yes.current.onclick = () => {
