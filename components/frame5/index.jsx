@@ -13,7 +13,6 @@ export default function Frame5({ vh }) {
     const animation = new MutationObserver((mu, ob) => {
       if (container.getAttribute('aria-hidden') === "false") {
         $img.current.style.animation = "frame9_myAnimation__A18mr 2.04s steps(1) forwards"
-        console.log("DOM被更新了");
       } else {
         setTimeout(() => {
           $img.current.style.animation = ""
