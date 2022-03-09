@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import vector4 from "../../assets/img/frame7/Vector 43.png";
 import Image from "next/image";
-import square from "../../assets/img/frame6/square.png";
+import square from "../../assets/网页动效/单次循环.webp";
 import { useEffect, useRef } from "react";
 
 
@@ -25,6 +25,33 @@ export default function Frame7({ vh }) {
     })
 
     animation.observe(container, { attributes: true, childList: true, subtree: true })
+
+
+    const imgArr = document.getElementsByClassName(styles.frame)[0].querySelectorAll("img");
+
+    imgArr.forEach((item) => {
+      if (item.className === "square") {
+        item.style.height = "16vh";
+        item.style.width = "35vh";
+        item.style.top = "-12vh";
+        item.style.left = "-15vh";
+        // item.style.
+        item.style["min-width"] = "";
+        item.style["min-height"] = "";
+        item.style["max-width"] = "";
+        item.style["max-height"] = "";
+
+        item.addEventListener("mouseover", () => {
+          if (item.className === "square") {
+            item.src = square.src;
+          }
+
+        })
+
+      }
+
+
+    })
 
   })
   return (
@@ -70,7 +97,7 @@ export default function Frame7({ vh }) {
           marginTop: 129 * vh,
         }}
       >
-        <Image src={square}></Image>
+        <Image className="square" src={square}></Image>
       </div>
     </div>
   );

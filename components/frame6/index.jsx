@@ -1,5 +1,5 @@
 import styles from "./index.module.css";
-import square from "../../assets/网页动效/无限循环.webp";
+import square from "../../assets/网页动效/单次循环.webp";
 import chanpin from "../../assets/网页动效/产品.webp";
 import shijue from "../../assets/网页动效/视觉.webp";
 import yidong from "../../assets/网页动效/移动.webp";
@@ -14,21 +14,44 @@ export default function Frame6({ vh }) {
   useEffect(() => {
     const imgArr = document.getElementsByClassName(styles.frame)[0].querySelectorAll("img");
 
+
     imgArr.forEach((item) => {
+      if(item.className==="square"){
+        item.style.height="32vh";
+        item.style.width="66vh";
+        item.style.top="6vh";
+        item.style.left="-29vh";
+        // item.style.
+        item.style["min-width"]="";
+        item.style["min-height"]="";
+        item.style["max-width"]="";
+        item.style["max-height"]="";
+        
+        
+      }
+      
       item.addEventListener("mouseover", () => {
         switch (item.className) {
           case "web":
             item.src = web.src;
+            break;
           case "square":
             item.src = square.src;
+            break;
           case "chanpin":
             item.src = chanpin.src;
+            break;
           case "yidong":
             item.src = yidong.src;
+            break;
           case "yunwei":
             item.src = yunwei.src;
+            break;
           case "shijue":
             item.src = shijue.src;
+            break;
+          default:
+            return;
         }
 
       })
@@ -105,7 +128,7 @@ export default function Frame6({ vh }) {
       </div>
       <div className={styles.fragment2} style={{ height: 205 * vh }}></div>
       <div className={styles.square2}>
-        <Image className="square" src={square} style={{ height: 205 * vh  }}></Image>
+        <Image className="square" src={square} style={{ height: 205 * vh}}></Image>
       </div>
       <div
         className={styles.square}

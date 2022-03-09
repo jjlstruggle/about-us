@@ -54,3 +54,23 @@
 .title3 {
   margin-left: 42px;
 }
+
+.square3 {
+  position: absolute;
+  top: 7vh;
+  left: -22vh;
+  bottom: 0;
+  right: 0px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  margin: auto;
+  display: block;
+  width: 50vh;
+  height: 25vh;
+}
+
+
+
+
+
