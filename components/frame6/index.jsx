@@ -1,5 +1,5 @@
 import styles from "./index.module.css";
-import square from "../../assets/网页动效/单次循环.webp";
+import square from "../../assets/网页动效/无限循环.webp";
 import chanpin from "../../assets/网页动效/产品.webp";
 import shijue from "../../assets/网页动效/视觉.webp";
 import yidong from "../../assets/网页动效/移动.webp";
@@ -21,11 +21,12 @@ export default function Frame6({ vh }) {
         item.style.width="66vh";
         item.style.top="6vh";
         item.style.left="-29vh";
-        // item.style.
         item.style["min-width"]="";
         item.style["min-height"]="";
         item.style["max-width"]="";
         item.style["max-height"]="";
+        item.parentNode.style.width="40vh";
+        item.parentNode.style.height="25vh"
         
         
       }
@@ -34,9 +35,6 @@ export default function Frame6({ vh }) {
         switch (item.className) {
           case "web":
             item.src = web.src;
-            break;
-          case "square":
-            item.src = square.src;
             break;
           case "chanpin":
             item.src = chanpin.src;
