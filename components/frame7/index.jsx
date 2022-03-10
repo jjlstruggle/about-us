@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import vector4 from "../../assets/img/frame7/Vector 43.png";
 import Image from "next/image";
-import square from "../../assets/网页动效/单次循环.webp";
+import square from "../../assets/网页动效/无限循环.webp";
 import { useEffect, useRef } from "react";
 
 
@@ -31,21 +31,16 @@ export default function Frame7({ vh }) {
     imgArr.forEach((item) => {
       if (item.className === "square") {
         item.style.height = "16vh";
-        item.style.width = "35vh";
-        item.style.top = "-12vh";
+        item.style.width = "33vh";
+        item.style.top = "-5vh";
         item.style.left = "-15vh";
-        // item.style.
         item.style["min-width"] = "";
         item.style["min-height"] = "";
         item.style["max-width"] = "";
         item.style["max-height"] = "";
-
-        item.addEventListener("mouseover", () => {
-          if (item.className === "square") {
-            item.src = square.src;
-          }
-
-        })
+        item.parentNode.style.width = "20vh";
+        item.parentNode.style.height = "20vh";
+        item.parentNode.style["max-width"] = ""
 
       }
 

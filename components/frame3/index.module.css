@@ -28,6 +28,7 @@
 
 .mySprite {
   position: absolute;
+  top: 10vh;
   right: -15vh;
   background-image: url("../../assets/线条动画/line.png");
   width: 450px;
