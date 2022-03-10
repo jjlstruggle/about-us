@@ -11,6 +11,7 @@ export default function Frame3({ vh }) {
 
   useEffect(() => {
 
+    $img.current.style.height="26vw"
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
       if (container.getAttribute('aria-hidden') === "false") {
