@@ -1,12 +1,66 @@
 import styles from "./index.module.css";
-import square from "../../assets/img/frame6/square.png";
-import chanpin from "../../assets/img/frame6/chanpin.png";
-import shijue from "../../assets/img/frame6/shijue.png";
-import yidong from "../../assets/img/frame6/yidongg.png";
-import yunwei from "../../assets/img/frame6/yunwei.png";
-import web from "../../assets/img/frame6/web.png";
+import square from "../../assets/网页动效/单次循环.webp";
+import chanpin from "../../assets/网页动效/产品.webp";
+import shijue from "../../assets/网页动效/视觉.webp";
+import yidong from "../../assets/网页动效/移动.webp";
+import yunwei from "../../assets/网页动效/SRE.webp";
+import web from "../../assets/网页动效/WEB.webp"
 import Image from "next/image";
+
+import { useEffect } from "react";
+
 export default function Frame6({ vh }) {
+
+  useEffect(() => {
+    const imgArr = document.getElementsByClassName(styles.frame)[0].querySelectorAll("img");
+
+
+    imgArr.forEach((item) => {
+      if(item.className==="square"){
+        item.style.height="32vh";
+        item.style.width="66vh";
+        item.style.top="6vh";
+        item.style.left="-29vh";
+        // item.style.
+        item.style["min-width"]="";
+        item.style["min-height"]="";
+        item.style["max-width"]="";
+        item.style["max-height"]="";
+        
+        
+      }
+      
+      item.addEventListener("mouseover", () => {
+        switch (item.className) {
+          case "web":
+            item.src = web.src;
+            break;
+          case "square":
+            item.src = square.src;
+            break;
+          case "chanpin":
+            item.src = chanpin.src;
+            break;
+          case "yidong":
+            item.src = yidong.src;
+            break;
+          case "yunwei":
+            item.src = yunwei.src;
+            break;
+          case "shijue":
+            item.src = shijue.src;
+            break;
+          default:
+            return;
+        }
+
+      })
+    })
+
+
+
+  })
+
   return (
     <div className={styles.frame} style={{ paddingTop: 118 * vh }}>
       <div
@@ -19,7 +73,7 @@ export default function Frame6({ vh }) {
           className={styles.pic1}
           style={{ marginTop: 28 * vh, marginBottom: 13 * vh }}
         >
-          <Image src={chanpin}></Image>
+          <Image className="chanpin" src={chanpin}></Image>
         </div>
         <div
           className={styles.title2 + " font2"}
@@ -39,7 +93,7 @@ export default function Frame6({ vh }) {
           className={styles.pic2}
           style={{ marginTop: 20 * vh, marginBottom: 4 * vh }}
         >
-          <Image src={shijue}></Image>
+          <Image className="shijue" src={shijue}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}
@@ -62,7 +116,7 @@ export default function Frame6({ vh }) {
           className={styles.pic1}
           style={{ marginTop: 28 * vh, marginBottom: 16 * vh }}
         >
-          <Image src={yidong}></Image>
+          <Image className="yidong" src={yidong}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}
@@ -74,7 +128,7 @@ export default function Frame6({ vh }) {
       </div>
       <div className={styles.fragment2} style={{ height: 205 * vh }}></div>
       <div className={styles.square2}>
-        <Image src={square}></Image>
+        <Image className="square" src={square} style={{ height: 205 * vh}}></Image>
       </div>
       <div
         className={styles.square}
@@ -86,7 +140,7 @@ export default function Frame6({ vh }) {
           className={styles.pic2}
           style={{ marginTop: 9 * vh, marginBottom: 8 * vh }}
         >
-          <Image src={web}></Image>
+          <Image className="web" src={web}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}
@@ -108,7 +162,7 @@ export default function Frame6({ vh }) {
           className={styles.pic1}
           style={{ marginTop: 28 * vh, marginBottom: 13 * vh }}
         >
-          <Image src={yunwei}></Image>
+          <Image className="yunwei" src={yunwei}></Image>
         </div>
         <div
           className={styles.title3 + " font2"}
