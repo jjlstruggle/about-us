@@ -20,6 +20,8 @@ import xbs from "../assets/img/frame4/qrcode2.png";
 import arrow2 from "../assets/img/frame4/arrow.png";
 
 import yinhao from "../assets/img/about/Vector.png";
+import { useState } from "react";
+import Link from "next/link";
 
 const imgs = [p, p1, p2];
 const picUrls = [
@@ -27,36 +29,43 @@ const picUrls = [
     picUrl: a1,
     title: "一天天yiyiyiyiy雨鱼鱼鱻",
     article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
+    type: "活动",
   },
   {
     picUrl: a2,
     title: "一天天yiyiyiyiy雨鱼鱼鱻",
     article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
+    type: "活动",
   },
   {
     picUrl: a3,
     title: "一天天yiyiyiyiy雨鱼鱼鱻",
     article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
+    type: "活动",
   },
   {
     picUrl: a4,
     title: "一天天yiyiyiyiy雨鱼鱼鱻",
     article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
+    type: "活动",
   },
   {
     picUrl: a5,
     title: "一天天yiyiyiyiy雨鱼鱼鱻",
     article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
+    type: "技术",
   },
   {
     picUrl: a6,
     title: "一天天yiyiyiyiy雨鱼鱼鱻",
     article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
+    type: "技术",
   },
   {
     picUrl: a7,
     title: "一天天yiyiyiyiy雨鱼鱼鱻",
     article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
+    type: "活动",
   },
 ];
 
@@ -78,6 +87,8 @@ const product = [
   },
 ];
 
+const types = ["全部", "活动", "技术分享"];
+
 const style = (index, marginBottom) =>
   (index + 1) % 4 === 0
     ? {
@@ -87,22 +98,23 @@ const style = (index, marginBottom) =>
     : {
         marginBottom,
       };
-
 const Event = ({ picUrl, title, article, marginBottom, index, vh }) => (
-  <div className={styles.event} style={style(index, marginBottom * vh)}>
-    <div className={styles.pic}>
-      <Image src={picUrl} layout="responsive" />
+  <Link href={`/article?aid=123456`}>
+    <div className={styles.event} style={style(index, marginBottom * vh)}>
+      <div className={styles.pic}>
+        <Image src={picUrl} layout="responsive" />
+      </div>
+      <div
+        className="font5"
+        style={{ marginTop: 24 * vh, color: "#141414", marginBottom: 4 * vh }}
+      >
+        {title}
+      </div>
+      <div className="font1" style={{ color: "#6a6a6a" }}>
+        {article}
+      </div>
     </div>
-    <div
-      className="font5"
-      style={{ marginTop: 24 * vh, color: "#141414", marginBottom: 4 * vh }}
-    >
-      {title}
-    </div>
-    <div className="font1" style={{ color: "#6a6a6a" }}>
-      {article}
-    </div>
-  </div>
+  </Link>
 );
 
 const Product = ({ picUrl, title, article, vh }) => (
@@ -123,6 +135,14 @@ const Product = ({ picUrl, title, article, vh }) => (
 );
 
 export default function About({ vh }) {
+  const [type, setType] = useState("全部");
+
+  const filerPicUrls = picUrls.filter((item) => {
+    if (type === "全部") return true;
+    else if (type === "活动") return item.type === type;
+    else return item.type !== "活动";
+  });
+
   const settings = {
     dots: true,
     infinite: true,
@@ -157,8 +177,24 @@ export default function About({ vh }) {
             <span />
             <div>近期活动</div>
           </div>
+          <div
+            className={styles.types + " font2"}
+            style={{ marginTop: 36 * vh }}
+          >
+            {types.map((item, i) => {
+              return (
+                <div
+                  className={item === type ? styles.select : ""}
+                  key={i}
+                  onClick={() => setType(item)}
+                >
+                  {item}
+                </div>
+              );
+            })}
+          </div>
           <div className={styles.event_box} style={{ marginTop: 48 * vh }}>
-            {picUrls.map((item, index) => (
+            {filerPicUrls.map((item, index) => (
               <Event
                 {...item}
                 key={index}
@@ -167,20 +203,24 @@ export default function About({ vh }) {
                 vh={vh}
               />
             ))}
-            <div
-              className={styles.moreEvent}
-              style={{ height: 119 * vh, marginBottom: 28 * vh }}
-            >
-              <div className="font4" style={{ marginTop: 39 * vh }}>
-                查看更多
+            {filerPicUrls.length > 7 ? (
+              <div
+                className={styles.moreEvent}
+                style={{ height: 119 * vh, marginBottom: 28 * vh }}
+              >
+                <div className="font4" style={{ marginTop: 39 * vh }}>
+                  查看更多
+                </div>
+                <div style={{ top: 75 * vh }}>
+                  <Image src={arrow} />
+                </div>
+                <div style={{ top: -49 * vh }}>
+                  <Image src={bolikuai} />
+                </div>
               </div>
-              <div style={{ top: 75 * vh }}>
-                <Image src={arrow} />
-              </div>
-              <div style={{ top: -49 * vh }}>
-                <Image src={bolikuai} />
-              </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
           <div className={styles.h1 + " font2"} style={{ marginTop: 90 * vh }}>
             <span />
@@ -195,8 +235,8 @@ export default function About({ vh }) {
             className={styles.box3}
             style={{ height: 165 * vh, top: 1007 * vh }}
           >
-            <div></div>
-            <div>
+            <div style={{ top: 103 * vh }}></div>
+            <div style={{ top: 103 * vh }}>
               <div className="font4" style={{ marginBottom: 12 * vh }}>
                 查看更多
               </div>

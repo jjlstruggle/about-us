@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import search from "../../assets/img/search.png";
+import search1 from "../../assets/img/search2.png";
+
 let open = true;
 export default function Head({ vh }) {
   const router = useRouter();
@@ -61,6 +64,9 @@ export default function Head({ vh }) {
           <Link href="/join">
             <div>加入我们</div>
           </Link>
+          <div className={styles.search}>
+            <Image src={mode !== "default" ? search : search1} />
+          </div>
         </div>
       </div>
     );
@@ -86,6 +92,11 @@ export default function Head({ vh }) {
         </Link>
         <Link href="/join">
           <div>加入我们</div>
+        </Link>
+        <Link href="/search">
+          <div className={styles.search}>
+            <Image src={search} />
+          </div>
         </Link>
       </div>
     </div>
