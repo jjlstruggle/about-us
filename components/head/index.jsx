@@ -64,9 +64,11 @@ export default function Head({ vh }) {
           <Link href="/join">
             <div>加入我们</div>
           </Link>
-          <div className={styles.search}>
-            <Image src={mode !== "default" ? search : search1} />
-          </div>
+          <Link href="/search">
+            <div className={styles.search}>
+              <Image src={mode !== "default" ? search : search1} />
+            </div>
+          </Link>
         </div>
       </div>
     );

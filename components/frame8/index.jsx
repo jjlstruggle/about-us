@@ -28,8 +28,9 @@ const data = [
   { time: "2008-10", article: "红岩网校首次登上人民日报", marginLeft: 96 },
 ];
 
-let offsetLeftArr = [];
-let space = [];
+let offsetLeftArr = [],
+  offset = [],
+  space = [];
 let last = 0;
 
 const Event = ({
@@ -96,30 +97,30 @@ export default function Frame8({ vh }) {
   }, []);
 
   useEffect(() => {
-    if (vh === 0) {
+    if (!vh || !vw) {
       return;
     }
-    setTimeout(() => {
+    space = [];
+    requestIdleCallback(() => {
       const events = [...document.querySelectorAll(".event")];
-      const rangeOffsetLeft = 105 * vw;
       // 弧形,容器的偏移量
-      offsetLeftArr = events.map((item) => {
-        space.push(item.clientWidth + item.offsetLeft - last);
-        last = item.clientWidth + item.offsetLeft;
-        return item.offsetLeft + rangeOffsetLeft - 35;
+      offsetLeftArr = events.map((item, index) => {
+        let o = data[index].marginLeft * vw + item.clientWidth;
+        space.push(o);
+        last += o;
+        offset.push(last);
+        return last - 170 * vw;
       });
       // 强制刷新一次
       setSelect(1);
-    }, 1000);
+    });
   }, [vw]);
 
   return (
     <div
       className={styles.frame}
       style={{
-        transform: `translateX(-${
-          (space[select] || 0) * (select === 0 ? 0 : select - 1)
-        }px)`,
+        transform: `translateX(-${select > 1 ? offset[select - 2] : 0}px)`,
       }}
     >
       <div className={styles.square} style={{ top: 153 * vh }}>
