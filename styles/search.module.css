@@ -1,4 +1,21 @@
+.mask {
+  position: absolute;
+  z-index: 999;
+  width: 100vw;
+  background: #00000073;
+  top: 0;
+  transition: transform 0.3s linear;
+  transform: translateY(-100%);
+  transform-origin: 50% 50%;
+}
 .search_box {
+  width: 100%;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.008) -7.97%,
+      rgba(0, 0, 0, 0) 59.21%
+    ),
+    #f9f9f9;
 }
 .search_head {
   position: relative;
@@ -15,6 +32,7 @@
   width: 800px;
   margin: 0 auto;
   vertical-align: top;
+  background-color: transparent;
 }
 .search_line {
   background-color: #6a6a6a;

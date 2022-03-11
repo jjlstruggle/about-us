@@ -9,7 +9,7 @@ import search from "../../assets/img/search.png";
 import search1 from "../../assets/img/search2.png";
 
 let open = true;
-export default function Head({ vh }) {
+export default function Head({ vh, showModel }) {
   const router = useRouter();
   const [mode, setMode] = useState("default");
   function whell(e) {
@@ -28,6 +28,10 @@ export default function Head({ vh }) {
       open = true;
     }
   }
+  const handleSearch = () => {
+    showModel();
+  };
+
   useEffect(() => {
     if (router.route === "/about-us") document.onmousewheel = whell;
     else document.onmousewheel = null;
@@ -64,11 +68,9 @@ export default function Head({ vh }) {
           <Link href="/join">
             <div>加入我们</div>
           </Link>
-          <Link href="/search">
-            <div className={styles.search}>
-              <Image src={mode !== "default" ? search : search1} />
-            </div>
-          </Link>
+          <div className={styles.search} onClick={handleSearch}>
+            <Image src={mode !== "default" ? search : search1} />
+          </div>
         </div>
       </div>
     );
@@ -95,11 +97,9 @@ export default function Head({ vh }) {
         <Link href="/join">
           <div>加入我们</div>
         </Link>
-        <Link href="/search">
-          <div className={styles.search}>
-            <Image src={search} />
-          </div>
-        </Link>
+        <div className={styles.search} onClick={handleSearch}>
+          <Image src={search} />
+        </div>
       </div>
     </div>
   );

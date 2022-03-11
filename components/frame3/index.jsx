@@ -3,31 +3,30 @@ import styles from "./index.module.css";
 import vector2 from "../../assets/img/frame3/Vector 43.png";
 import { useEffect, useRef } from "react";
 
-
 export default function Frame3({ vh }) {
-
   const $body = useRef(null);
   const $img = useRef(null);
 
   useEffect(() => {
-
-    $img.current.style.height="26vw"
+    $img.current.style.height = "26vw";
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
-      if (container.getAttribute('aria-hidden') === "false") {
-        $img.current.style.animation = "frame9_myAnimation__A18mr 2.04s steps(1) forwards"
+      if (container.getAttribute("aria-hidden") === "false") {
+        $img.current.style.animation =
+          "frame9_myAnimation__A18mr 2.04s steps(1) forwards";
       } else {
         setTimeout(() => {
-          $img.current.style.animation = ""
-        }, 500)
+          $img.current.style.animation = "";
+        }, 500);
       }
+    });
 
-    })
-
-    animation.observe(container, { attributes: true, childList: true, subtree: true })
-
-  })
-
+    animation.observe(container, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+  });
 
   return (
     <div className={styles.frame} ref={$body}>

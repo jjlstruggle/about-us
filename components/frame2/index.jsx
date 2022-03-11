@@ -4,9 +4,26 @@ import star1 from "../../assets/img/frame2/Star 1.png";
 import star2 from "../../assets/img/frame2/Star 2.png";
 import vector from "../../assets/img/frame2/Vector 1.png";
 import styles from "./index.module.css";
+import { useEffect, useRef } from "react";
 export default function Frame2({ vh }) {
+  useEffect(() => {
+    const container = $body.current.parentNode.parentNode;
+    const animation = new MutationObserver((mu, ob) => {
+      console.log(0);
+      console.log(animation);
+    });
+
+    animation.observe(container, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+  });
+
+  const $body = useRef(null);
+
   return (
-    <div className={styles.frame}>
+    <div className={styles.frame} ref={$body}>
       <div
         className={styles.bannar}
         style={{
