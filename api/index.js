@@ -2,7 +2,8 @@ const baseUrl = "/api";
 
 const $ = async (url, options) => {
   const data = await fetch(baseUrl + url, options);
-  return data.json().data;
+  const p = await data.json()
+  return p.data;
 };
 
 export const getEasyInfo = async () => {

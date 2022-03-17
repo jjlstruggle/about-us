@@ -54,9 +54,7 @@ function MyApp({ Component, pageProps }) {
           translateY: "-100%",
           duration: 300,
           complete: function () {
-            setTimeout(() => {
-              model.current.style.transform = "translateY(-100%)";
-            }, 500);
+            model.current.style.transform = "translateY(-100%)";
           },
         });
       },

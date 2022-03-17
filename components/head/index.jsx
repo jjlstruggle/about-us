@@ -56,7 +56,7 @@ export default function Head({ vh, showModel }) {
         }}
       >
         <div className={styles.logo}>
-          <Image src={mode === "default" ? logo : logo1}></Image>
+          <Image src={mode === "default" ? logo : logo1} priority></Image>
         </div>
         <div className={styles.frame1_nav + " flex-center-center"}>
           <Link href="/">
@@ -85,7 +85,7 @@ export default function Head({ vh, showModel }) {
       }}
     >
       <div className={styles.logo}>
-        <Image src={logo1}></Image>
+        <Image src={logo1} priority></Image>
       </div>
       <div className={styles.frame1_nav + " flex-center-center"}>
         <Link href="/">

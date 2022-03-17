@@ -115,6 +115,7 @@
 .pic2 {
   position: absolute;
   width: 86px;
+  height: 86px;
   right: 36px;
 }
 
@@ -135,8 +136,22 @@
   background-size: 100% 100%;
 }
 
+.product > div:nth-child(2){
+  width: 185px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .product > div:nth-child(3) {
   width: 145px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .box3 {

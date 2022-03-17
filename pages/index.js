@@ -89,12 +89,12 @@ const types = ["全部", "活动", "技术分享"];
 const style = (index, marginBottom) =>
   (index + 1) % 4 === 0
     ? {
-        marginRight: 0,
-        marginBottom,
-      }
+      marginRight: 0,
+      marginBottom,
+    }
     : {
-        marginBottom,
-      };
+      marginBottom,
+    };
 const Event = ({ picUrl, title, article, marginBottom, index, vh }) => (
   <Link href={`/article?aid=123456`}>
     <div className={styles.event} style={style(index, marginBottom * vh)}>
@@ -117,15 +117,16 @@ const Event = ({ picUrl, title, article, marginBottom, index, vh }) => (
 const Product = ({ picUrl, title, article, vh }) => (
   <div className={styles.product} style={{ height: 134 * vh }}>
     <div className={styles.pic2} style={{ top: 24 * vh }}>
-      <Image src={picUrl} />
+      <Image src={picUrl} layout="fill" />
     </div>
     <div
       className="font5"
       style={{ marginTop: 31 * vh, color: "#141414", marginBottom: 4 * vh }}
+      title={title}
     >
       {title}
     </div>
-    <div className="font1" style={{ color: "#2e2e2e" }}>
+    <div className="font1" style={{ color: "#2e2e2e" }} title={article}>
       {article}
     </div>
   </div>
@@ -167,6 +168,7 @@ export default function About({ vh }) {
 
   useEffect(() => {
     getEasyInfo().then((res) => {
+      console.log(res.essays);
       setEasyInfo(res.essays);
     });
   }, []);
@@ -184,7 +186,7 @@ export default function About({ vh }) {
           {bannar.map((item, index) => (
             <div key={index}>
               <div className={styles.item} style={{ height: 648 * vh }}>
-                <Image src={item.pic} layout="fill" />
+                <Image src={item.pic} layout="fill" quality={100} priority />
               </div>
             </div>
           ))}
@@ -231,10 +233,10 @@ export default function About({ vh }) {
                   查看更多
                 </div>
                 <div style={{ top: 75 * vh }}>
-                  <Image src={arrow} />
+                  <Image src={arrow} layout="fill" />
                 </div>
                 <div style={{ top: -49 * vh }}>
-                  <Image src={bolikuai} />
+                  <Image src={bolikuai} layout="fill" />
                 </div>
               </div>
             ) : (
@@ -249,10 +251,10 @@ export default function About({ vh }) {
             className={styles.event_box}
             style={{ marginTop: 48 * vh, height: 134 * vh }}
           >
-            {card.map((item, index) => (
+            {card.slice(0, 3).map((item, index) => (
               <Product
                 picUrl={item.pic}
-                title={item.Product}
+                title={item.little_title}
                 article={item.content}
                 key={index}
                 vh={vh}
@@ -266,10 +268,10 @@ export default function About({ vh }) {
             <div style={{ top: 103 * vh }}></div>
             {card.length > 3 ? (
               <div style={{ top: 103 * vh }}>
-                <div className="font4" style={{ marginBottom: 12 * vh }}>
+                <div className="font4" style={{ marginBottom: 12 * vh, cursor: 'pointer' }}>
                   查看更多
                 </div>
-                <div>
+                <div style={{ cursor: 'pointer' }}>
                   <Image src={arrow2} />
                 </div>
               </div>
@@ -284,7 +286,7 @@ export default function About({ vh }) {
           <div className={styles.event_box} style={{ marginTop: 48 * vh }}>
             <div className={styles.box4} style={{ height: 212 * vh }}>
               <div className={styles.yinhao} style={{ top: 32 * vh }}>
-                <Image src={yinhao} />
+                <Image src={yinhao} layout="fill" />
               </div>
               <div className={styles.art + " font4"}>
                 红岩网校工作站发展21年以来，已经逐步建立起了成熟的人才培养体系和课程制度。
@@ -298,7 +300,7 @@ export default function About({ vh }) {
               </button>
             </div>
             <div className={styles.r}>
-              <Image src={r} />
+              <Image src={r} layout="fill" />
             </div>
           </div>
           <div style={{ height: 80 * vh }}></div>
