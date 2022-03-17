@@ -1,9 +1,6 @@
 import styles from "../styles/index.module.css";
 import Slider from "react-slick";
 import Image from "next/image";
-import p from "../assets/img/about/preview (1).jpg";
-import p1 from "../assets/img/about/preview (2).jpg";
-import p2 from "../assets/img/about/preview.jpg";
 
 import a1 from "../assets/img/about/unsplash_WmnsGyaFnCQ (1).png";
 import a2 from "../assets/img/about/unsplash_WmnsGyaFnCQ (2).png";
@@ -20,10 +17,10 @@ import xbs from "../assets/img/frame4/qrcode2.png";
 import arrow2 from "../assets/img/frame4/arrow.png";
 
 import yinhao from "../assets/img/about/Vector.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { getBannar, getCard, getEasyInfo } from "../api";
 
-const imgs = [p, p1, p2];
 const picUrls = [
   {
     picUrl: a1,
@@ -158,14 +155,36 @@ export default function About({ vh }) {
     dotsClass: styles.nav_box,
   };
 
+  const [bannar, setBannar] = useState([]);
+  const [easyInfo, setEasyInfo] = useState([]);
+  const [card, setCard] = useState([]);
+
+  useEffect(() => {
+    getBannar().then((res) => {
+      setBannar(res.figures);
+    });
+  }, []);
+
+  useEffect(() => {
+    getEasyInfo().then((res) => {
+      setEasyInfo(res.essays);
+    });
+  }, []);
+
+  useEffect(() => {
+    getCard().then((res) => {
+      setCard(res.cards);
+    });
+  }, []);
+
   return (
     <>
       <div className={styles.box} style={{ height: 647 * vh }}>
         <Slider {...settings}>
-          {imgs.map((item, index) => (
+          {bannar.map((item, index) => (
             <div key={index}>
               <div className={styles.item} style={{ height: 648 * vh }}>
-                <Image src={item} layout="fill" />
+                <Image src={item.pic} layout="fill" />
               </div>
             </div>
           ))}
@@ -226,9 +245,18 @@ export default function About({ vh }) {
             <span />
             <div>活动产品</div>
           </div>
-          <div className={styles.event_box} style={{ marginTop: 48 * vh }}>
-            {product.map((item, index) => (
-              <Product {...item} key={index} vh={vh} />
+          <div
+            className={styles.event_box}
+            style={{ marginTop: 48 * vh, height: 134 * vh }}
+          >
+            {card.map((item, index) => (
+              <Product
+                picUrl={item.pic}
+                title={item.Product}
+                article={item.content}
+                key={index}
+                vh={vh}
+              />
             ))}
           </div>
           <div
@@ -236,14 +264,18 @@ export default function About({ vh }) {
             style={{ height: 165 * vh, top: 1007 * vh }}
           >
             <div style={{ top: 103 * vh }}></div>
-            <div style={{ top: 103 * vh }}>
-              <div className="font4" style={{ marginBottom: 12 * vh }}>
-                查看更多
+            {card.length > 3 ? (
+              <div style={{ top: 103 * vh }}>
+                <div className="font4" style={{ marginBottom: 12 * vh }}>
+                  查看更多
+                </div>
+                <div>
+                  <Image src={arrow2} />
+                </div>
               </div>
-              <div>
-                <Image src={arrow2} />
-              </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
           <div className={styles.h1 + " font2"} style={{ marginTop: 166 * vh }}>
             <span />

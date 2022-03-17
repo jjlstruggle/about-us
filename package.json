@@ -2,11 +2,10 @@
   "name": "about-us",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "b": "next build && next export"
+    "lint": "next lint"
   },
   "dependencies": {
     "animejs": "^3.2.1",
@@ -15,14 +14,15 @@
     "react-dom": "17.0.2",
     "react-slick": "^0.28.1",
     "react-waypoint": "^10.1.0",
-    "slick-carousel": "^1.8.1",
-    "typed.js": "^2.0.12"
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
     "@babel/preset-react": "^7.16.7",
     "eslint": "8.8.0",
     "eslint-config-next": "12.0.10",
+    "express": "^4.17.3",
+    "http-proxy-middleware": "^2.0.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.3.1",
     "postcss-px-to-viewport": "^1.1.1"
