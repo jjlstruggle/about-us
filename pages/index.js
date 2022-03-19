@@ -7,42 +7,11 @@ import r from "../assets/img/about/r.png";
 import arrow2 from "../assets/img/frame4/arrow.png";
 import yinhao from "../assets/img/about/Vector.png";
 import { useState } from "react";
-import Link from "next/link";
-
+import Event from "../components/Event";
 const types = ["全部", "活动", "技术分享"];
 
-const style = (index, marginBottom, vh) =>
-  (index + 1) % 4 === 0
-    ? {
-      marginRight: 0,
-      marginBottom,
-      height: 295 * vh
-    }
-    : {
-      marginBottom,
-      height: 295 * vh
-    };
-const Event = ({ pic, title, introduction, marginBottom, index, vh, ID, type }) => (
-  <Link href={`/article?aid=${ID}`}>
-    <div className={styles.event} style={style(index, marginBottom * vh, vh)}>
-      <div className={styles.pic} style={{ height: 141 * vh }}>
-        <Image src={pic || r} layout='fill' />
-      </div>
-      <div
-        className="font5"
-        style={{ marginTop: 24 * vh, color: "#141414", marginBottom: 4 * vh }}
-        title={title}
-      >
-        {title}
-      </div>
-      <div className="font1" style={{ color: "#6a6a6a" }} title={introduction}>
-        {introduction}
-      </div>
-      {type !== '活动' ? <div className={styles.tag2 + ' font1'} style={{ bottom: 14 * vh }}>#{type}</div> : <div className={styles.tag + ' font1'} style={{ bottom: 14 * vh }}>#{type}</div>}
-    </div>
-  </Link>
-)
-  ;
+
+;
 
 const Product = ({ picUrl, title, article, vh }) => (
   <div className={styles.product} style={{ height: 134 * vh }}>

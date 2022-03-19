@@ -9,7 +9,7 @@ import search from "../../assets/img/search.png";
 import search1 from "../../assets/img/search2.png";
 
 let open = true;
-export default function Head({ vh, showModel }) {
+export default function Head({ vh, showModel, toClose, show }) {
   const router = useRouter();
   const [mode, setMode] = useState("default");
   function whell(e) {
@@ -39,11 +39,12 @@ export default function Head({ vh, showModel }) {
   if (router.route === "/about-us")
     return (
       <div
+        onClick={toClose}
         className={styles.frame1_bar + " flex-center-center"}
         style={{
           height: 72 * vh,
           color: mode === "default" ? "#fafafa" : "#141414",
-          backgroundColor: mode === "default" ? "" : "#f9f9f9",
+          backgroundColor: mode === "default" ? "" : "#fff",
           position: "absolute",
         }}
         onMouseOver={() => {
@@ -76,11 +77,16 @@ export default function Head({ vh, showModel }) {
     );
   return (
     <div
+      onClick={() => {
+        if (show) {
+          toClose();
+        }
+      }}
       className={styles.frame1_bar + " flex-center-center"}
       style={{
         height: 72 * vh,
         color: "#141414",
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "#fff",
         position: router.route === "/about-us" ? "absolute" : "relative",
       }}
     >

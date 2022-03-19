@@ -53,3 +53,8 @@ export const submit = async (content) => {
   })
   return p
 }
+
+export const search = async (content) => {
+  let p = await $('/article?key=' + content)
+  return p
+}
