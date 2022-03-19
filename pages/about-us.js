@@ -10,7 +10,7 @@ import Frame3 from "../components/frame3";
 import Frame2 from "../components/frame2";
 import Frame1 from "../components/frame1";
 import Slider from "react-slick";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 
 const frames = [
   Frame2,
@@ -45,19 +45,6 @@ export default function Home({ vh }) {
     adaptiveHeight: true,
     centerPadding: "0",
   };
-
-  // useEffect(() => {
-  //   document.addEventListener("wheel", () => {
-  //     document.querySelectorAll("div").forEach((item) => {
-  //       if (item.getAttribute("aria-hidden") === "true") {
-  //         item.querySelectorAll("div").forEach((item) => {
-  //           console.log(item);
-  //           item.style.animation="myAnimation 2.04s steps(1) infinite"
-  //         })
-  //       }
-  //     });
-  //   });
-  // });
 
   return (
     <>

@@ -1,36 +1,34 @@
 import styles from "./index.module.css";
-import square from "../../assets/网页动效/无限循环.webp";
-import chanpin from "../../assets/网页动效/产品.webp";
-import shijue from "../../assets/网页动效/视觉.webp";
-import yidong from "../../assets/网页动效/移动.webp";
-import yunwei from "../../assets/网页动效/SRE.webp";
-import web from "../../assets/网页动效/WEB.webp"
+import square from "../../assets/网页动效/无限循环.png";
+import chanpin from "../../assets/网页动效/产品.png";
+import shijue from "../../assets/网页动效/视觉.png";
+import yidong from "../../assets/网页动效/移动.png";
+import yunwei from "../../assets/网页动效/SRE.png";
+import web from "../../assets/网页动效/WEB.png";
 import Image from "next/image";
 
 import { useEffect } from "react";
 
 export default function Frame6({ vh }) {
-
   useEffect(() => {
-    const imgArr = document.getElementsByClassName(styles.frame)[0].querySelectorAll("img");
-
+    const imgArr = document
+      .getElementsByClassName(styles.frame)[0]
+      .querySelectorAll("img");
 
     imgArr.forEach((item) => {
-      if(item.className==="square"){
-        item.style.height="32vh";
-        item.style.width="66vh";
-        item.style.top="6vh";
-        item.style.left="-29vh";
-        item.style["min-width"]="";
-        item.style["min-height"]="";
-        item.style["max-width"]="";
-        item.style["max-height"]="";
-        item.parentNode.style.width="40vh";
-        item.parentNode.style.height="25vh"
-        
-        
+      if (item.className === "square") {
+        item.style.height = "32vh";
+        item.style.width = "66vh";
+        item.style.top = "6vh";
+        item.style.left = "-29vh";
+        item.style["min-width"] = "";
+        item.style["min-height"] = "";
+        item.style["max-width"] = "";
+        item.style["max-height"] = "";
+        item.parentNode.style.width = "40vh";
+        item.parentNode.style.height = "25vh";
       }
-      
+
       item.addEventListener("mouseover", () => {
         switch (item.className) {
           case "web":
@@ -51,13 +49,9 @@ export default function Frame6({ vh }) {
           default:
             return;
         }
-
-      })
-    })
-
-
-
-  })
+      });
+    });
+  });
 
   return (
     <div className={styles.frame} style={{ paddingTop: 118 * vh }}>
@@ -125,8 +119,8 @@ export default function Frame6({ vh }) {
         <div className={styles.title3 + " font1"}>“方寸间世界的创造者“</div>
       </div>
       <div className={styles.fragment2} style={{ height: 205 * vh }}></div>
-      <div className={styles.square2}>
-        <Image className="square" src={square} style={{ height: 205 * vh}}></Image>
+      <div className={styles.square2} style={{ height: 205 * vh }}>
+        <Image className="square" src={square}></Image>
       </div>
       <div
         className={styles.square}

@@ -1,32 +1,35 @@
 import styles from "./index.module.css";
 import vector4 from "../../assets/img/frame7/Vector 43.png";
 import Image from "next/image";
-import square from "../../assets/网页动效/无限循环.webp";
+import square from "../../assets/网页动效/无限循环.png";
 import { useEffect, useRef } from "react";
 
-
 export default function Frame7({ vh }) {
-
   const $body = useRef(null);
   const $img = useRef(null);
 
   useEffect(() => {
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
-      if (container.getAttribute('aria-hidden') === "false") {
-        $img.current.style.animation = "frame9_myAnimation__A18mr 2.04s steps(1) forwards"
+      if (container.getAttribute("aria-hidden") === "false") {
+        $img.current.style.animation =
+          "frame9_myAnimation__A18mr 2.04s steps(1) forwards";
       } else {
         setTimeout(() => {
-          $img.current.style.animation = ""
-        }, 500)
+          $img.current.style.animation = "";
+        }, 500);
       }
+    });
 
-    })
+    animation.observe(container, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
 
-    animation.observe(container, { attributes: true, childList: true, subtree: true })
-
-
-    const imgArr = document.getElementsByClassName(styles.frame)[0].querySelectorAll("img");
+    const imgArr = document
+      .getElementsByClassName(styles.frame)[0]
+      .querySelectorAll("img");
 
     imgArr.forEach((item) => {
       if (item.className === "square") {
@@ -40,14 +43,10 @@ export default function Frame7({ vh }) {
         item.style["max-height"] = "";
         item.parentNode.style.width = "20vh";
         item.parentNode.style.height = "20vh";
-        item.parentNode.style["max-width"] = ""
-
+        item.parentNode.style["max-width"] = "";
       }
-
-
-    })
-
-  })
+    });
+  });
   return (
     <div className={styles.frame} ref={$body}>
       <div
