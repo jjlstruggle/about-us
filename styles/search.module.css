@@ -87,3 +87,23 @@
 .p_box > div {
   margin-bottom: 24px;
 }
+
+.types {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2e2e2e;
+  margin: 0;
+}
+
+.types div {
+  margin: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-weight: 400;
+}
+
+.types .select {
+  color: #ff406e;
+  font-weight: 700;
+}

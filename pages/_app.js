@@ -13,6 +13,7 @@ import anime from "animejs";
 import debonce from "../util/debonce";
 import { getBannar, getCard, getEasyInfo, search as $search } from "../api";
 import Event from "../components/Event";
+const types = ["全部", "活动", "技术分享"];
 
 
 function MyApp({ Component, pageProps }) {
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }) {
       localStorage.setItem('articleArr', JSON.stringify([]))
     }
   }, [])
-  const [show, setShow] = useState(false)
+
   const [vh, setVh] = useState(0);
   const router = useRouter();
   const { route } = router;
@@ -70,14 +71,15 @@ function MyApp({ Component, pageProps }) {
 
   const showModel = () => {
     if (!model) return;
-    setShow(true)
     app.current.style.overflow = 'hidden'
     model.current.style.transform = `translateY(${72 * vh}px)`;
   };
 
   const toClose = () => {
     if (!model) return;
-    setShow(false)
+    setHasSearch(false)
+    setRes([])
+    ipt.current.value = ''
     app.current.style.overflow = 'hidden auto'
     anime({
       targets: model.current,
@@ -96,10 +98,17 @@ function MyApp({ Component, pageProps }) {
     });
   };
 
+  const filerPicUrls = res.filter((item) => {
+    if (type === "全部") return true;
+    else if (type === "活动") return item.type === type;
+    else return item.type !== "活动";
+  });
+
+
   return (
     <>
       <div id="app" ref={app}>
-        <Head vh={vh} show={show} toClose={toClose} showModel={showModel} state={state} app={app} />
+        <Head vh={vh} toClose={toClose} showModel={showModel} state={state} app={app} hasSearch={hasSearch} />
         <Component {...pageProps} vh={vh} state={state} />
         <Footer vh={vh} />
       </div>
@@ -111,7 +120,7 @@ function MyApp({ Component, pageProps }) {
         <div className={styles.search_box} style={{ paddingTop: 70 * vh }}>
           <div
             className={styles.search_head}
-            style={{ marginBottom: 80 * vh, transform: `translateY(${res.length ? -50 * vh : 120 * vh}px)` }}
+            style={{ marginBottom: (filerPicUrls.lenght ? 80 : 0) * vh, transform: `translateY(${res.length ? -50 * vh : 120 * vh}px)` }}
           >
             <div className={styles.ipt_box}>
               <input
@@ -136,22 +145,39 @@ function MyApp({ Component, pageProps }) {
 
           </div>
           <div className={styles.search_res}>
-            {(hasSearch && !res.length) ? <div style={{ top: 90 * vh }} className={styles.noRes + ' font4 flex-center-center'}>
+            {(hasSearch && !filerPicUrls.length) ? <div style={{ top: 170 * vh }} className={styles.noRes + ' font4 flex-center-center'}>
               <div> ヽ༼⊙_⊙༽ﾉ</div>
               <div>没有找到相关内容欸</div>
             </div> :
-              <div className={styles.p_box}>
-                {res.map((item, index) => {
-                  return <Event
-                    {...item}
-                    key={index}
-                    marginBottom={28}
-                    index={index}
-                    vh={vh}
-                    onClick={toClose()}
-                  />
+              <>{hasSearch && filerPicUrls.length ? <div
+                className={styles.types + " font2"}
+                style={{ height: 34 * vh, marginBottom: 48 * vh }}
+              >
+                {types.map((item, i) => {
+                  return (
+                    <div
+                      className={item === type ? styles.select : ""}
+                      key={i}
+                      onClick={() => setType(item)}
+                    >
+                      {item}
+                    </div>
+                  );
                 })}
-              </div>
+              </div> : ""}
+                <div className={styles.p_box}>
+
+                  {filerPicUrls.map((item, index) => {
+                    return <Event
+                      {...item}
+                      key={index}
+                      marginBottom={28}
+                      index={index}
+                      vh={vh}
+                      onClick={toClose}
+                    />
+                  })}
+                </div></>
             }
           </div>
           <div className={styles.close} style={{ top: 70 * vh, transform: `translateY(${res.length ? -120 * vh : 0}px)` }} onClick={toClose}>

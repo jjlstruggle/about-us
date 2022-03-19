@@ -9,7 +9,7 @@ import search from "../../assets/img/search.png";
 import search1 from "../../assets/img/search2.png";
 
 let open = true;
-export default function Head({ vh, showModel, toClose, show }) {
+export default function Head({ vh, showModel, toClose, hasSearch }) {
   const router = useRouter();
   const [mode, setMode] = useState("default");
   function whell(e) {
@@ -78,7 +78,7 @@ export default function Head({ vh, showModel, toClose, show }) {
   return (
     <div
       onClick={() => {
-        if (show) {
+        if (hasSearch) {
           toClose();
         }
       }}
