@@ -94,7 +94,7 @@ export default function Head({ vh, showModel }) {
         <Link href="/about-us">
           <div>关于我们</div>
         </Link>
-        <Link href="/join">
+        <Link href="/join/joinus">
           <div>加入我们</div>
         </Link>
         <div className={styles.search} onClick={handleSearch}>

@@ -1,118 +1,48 @@
 import styles from "../styles/index.module.css";
 import Slider from "react-slick";
 import Image from "next/image";
-
-import a1 from "../assets/img/about/unsplash_WmnsGyaFnCQ (1).png";
-import a2 from "../assets/img/about/unsplash_WmnsGyaFnCQ (2).png";
-import a3 from "../assets/img/about/unsplash_WmnsGyaFnCQ (3).png";
-import a4 from "../assets/img/about/unsplash_WmnsGyaFnCQ (4).png";
-import a5 from "../assets/img/about/unsplash_WmnsGyaFnCQ (5).png";
-import a6 from "../assets/img/about/unsplash_WmnsGyaFnCQ (6).png";
-import a7 from "../assets/img/about/unsplash_WmnsGyaFnCQ.png";
-
 import bolikuai from "../assets/img/frame6/square.png";
 import arrow from "../assets/img/about/arrow.png";
 import r from "../assets/img/about/r.png";
-import xbs from "../assets/img/frame4/qrcode2.png";
 import arrow2 from "../assets/img/frame4/arrow.png";
-
 import yinhao from "../assets/img/about/Vector.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { getBannar, getCard, getEasyInfo } from "../api";
-
-const picUrls = [
-  {
-    picUrl: a1,
-    title: "一天天yiyiyiyiy雨鱼鱼鱻",
-    article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
-    type: "活动",
-  },
-  {
-    picUrl: a2,
-    title: "一天天yiyiyiyiy雨鱼鱼鱻",
-    article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
-    type: "活动",
-  },
-  {
-    picUrl: a3,
-    title: "一天天yiyiyiyiy雨鱼鱼鱻",
-    article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
-    type: "活动",
-  },
-  {
-    picUrl: a4,
-    title: "一天天yiyiyiyiy雨鱼鱼鱻",
-    article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
-    type: "活动",
-  },
-  {
-    picUrl: a5,
-    title: "一天天yiyiyiyiy雨鱼鱼鱻",
-    article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
-    type: "技术",
-  },
-  {
-    picUrl: a6,
-    title: "一天天yiyiyiyiy雨鱼鱼鱻",
-    article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
-    type: "技术",
-  },
-  {
-    picUrl: a7,
-    title: "一天天yiyiyiyiy雨鱼鱼鱻",
-    article: "体育uuu发一份会更好 uuu更丰富的动态添加u很符合很讨厌",
-    type: "活动",
-  },
-];
-
-const product = [
-  {
-    picUrl: xbs,
-    title: "红岩研究所",
-    article: "这是红岩网校2021年秋季招新H5",
-  },
-  {
-    picUrl: xbs,
-    title: "红岩研究所",
-    article: "这是红岩网校2021年秋季招新H5",
-  },
-  {
-    picUrl: xbs,
-    title: "红岩研究所",
-    article: "这是红岩网校2021年秋季招新H5",
-  },
-];
 
 const types = ["全部", "活动", "技术分享"];
 
-const style = (index, marginBottom) =>
+const style = (index, marginBottom, vh) =>
   (index + 1) % 4 === 0
     ? {
       marginRight: 0,
       marginBottom,
+      height: 295 * vh
     }
     : {
       marginBottom,
+      height: 295 * vh
     };
-const Event = ({ picUrl, title, article, marginBottom, index, vh }) => (
-  <Link href={`/article?aid=123456`}>
-    <div className={styles.event} style={style(index, marginBottom * vh)}>
-      <div className={styles.pic}>
-        <Image src={picUrl} layout="responsive" />
+const Event = ({ pic, title, introduction, marginBottom, index, vh, ID, type }) => (
+  <Link href={`/article?aid=${ID}`}>
+    <div className={styles.event} style={style(index, marginBottom * vh, vh)}>
+      <div className={styles.pic} style={{ height: 141 * vh }}>
+        <Image src={pic || r} layout='fill' />
       </div>
       <div
         className="font5"
         style={{ marginTop: 24 * vh, color: "#141414", marginBottom: 4 * vh }}
+        title={title}
       >
         {title}
       </div>
-      <div className="font1" style={{ color: "#6a6a6a" }}>
-        {article}
+      <div className="font1" style={{ color: "#6a6a6a" }} title={introduction}>
+        {introduction}
       </div>
+      {type !== '活动' ? <div className={styles.tag2 + ' font1'} style={{ bottom: 14 * vh }}>#{type}</div> : <div className={styles.tag + ' font1'} style={{ bottom: 14 * vh }}>#{type}</div>}
     </div>
   </Link>
-);
+)
+  ;
 
 const Product = ({ picUrl, title, article, vh }) => (
   <div className={styles.product} style={{ height: 134 * vh }}>
@@ -132,10 +62,11 @@ const Product = ({ picUrl, title, article, vh }) => (
   </div>
 );
 
-export default function About({ vh }) {
+export default function About({ vh, state }) {
   const [type, setType] = useState("全部");
+  const { bannar, easyInfo, card } = state
 
-  const filerPicUrls = picUrls.filter((item) => {
+  const filerPicUrls = easyInfo.filter((item) => {
     if (type === "全部") return true;
     else if (type === "活动") return item.type === type;
     else return item.type !== "活动";
@@ -155,29 +86,6 @@ export default function About({ vh }) {
     customPaging: (i) => <span />,
     dotsClass: styles.nav_box,
   };
-
-  const [bannar, setBannar] = useState([]);
-  const [easyInfo, setEasyInfo] = useState([]);
-  const [card, setCard] = useState([]);
-
-  useEffect(() => {
-    getBannar().then((res) => {
-      setBannar(res.figures);
-    });
-  }, []);
-
-  useEffect(() => {
-    getEasyInfo().then((res) => {
-      console.log(res.essays);
-      setEasyInfo(res.essays);
-    });
-  }, []);
-
-  useEffect(() => {
-    getCard().then((res) => {
-      setCard(res.cards);
-    });
-  }, []);
 
   return (
     <>

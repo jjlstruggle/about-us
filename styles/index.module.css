@@ -74,10 +74,32 @@
   width: 282px;
   margin-right: 24px;
   cursor: pointer;
+  position: relative;
+}
+
+.event > div:nth-child(2){
+  width: 239px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+.event > div:nth-child(3){
+  width: 239px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
 }
 
 .pic {
   width: 250px;
+  position: relative;
 }
 
 .event_box {
@@ -86,6 +108,21 @@
   flex-wrap: wrap;
   position: relative;
   z-index: 1;
+}
+
+.tag{
+  position: absolute;
+  color: #ff406e;
+  right: 23px;
+}
+
+.tag2{
+  position: absolute;
+  right: 23px;
+  background: linear-gradient(to right,
+  #E69900,#5040D5);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .moreEvent {

@@ -27,3 +27,29 @@ export const getArticleInfo = async (id) => {
   const p = await $("/essay", { method: "post", body: form });
   return p;
 };
+
+export const setIslike = async (id, like) => {
+  let form = new FormData()
+  form.append('id', id)
+  form.append('like', like)
+  const p = await $('/essay/likes', {
+    method: 'post',
+    body: form
+  })
+  return p
+}
+
+export const getQAndA = async () => {
+  const p = await $('/qAndA')
+  return p
+}
+
+export const submit = async (content) => {
+  let form = new FormData()
+  form.append('content', content)
+  const p = await $('/feedback', {
+    method: 'post',
+    body: form
+  })
+  return p
+}

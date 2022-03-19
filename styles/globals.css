@@ -103,3 +103,11 @@ li.slick-active {
   height: 100vh;
   display: flex;
 }
+
+
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}

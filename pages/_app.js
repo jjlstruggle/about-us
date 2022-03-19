@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Head from "../components/head";
 import "../styles/globals.css";
 import "slick-carousel/slick/slick.css";
@@ -11,12 +11,37 @@ import search from "../assets/img/search.png";
 import close from "../assets/img/close.png";
 import anime from "animejs";
 import debonce from "../util/debonce";
+import { getBannar, getCard, getEasyInfo } from "../api";
+
 function MyApp({ Component, pageProps }) {
+
+  useEffect(() => {
+    const atr = localStorage.getItem('articleArr')
+    if (!atr) {
+      localStorage.setItem('articleArr', JSON.stringify([]))
+    }
+  }, [])
+
   const [vh, setVh] = useState(0);
   const router = useRouter();
   const { route } = router;
   const app = useRef(null);
   const model = useRef(null);
+  const [state, setState] = useState({
+    bannar: [],
+    card: [],
+    easyInfo: []
+  })
+  useLayoutEffect(() => {
+    Promise.all([getBannar(), getCard(), getEasyInfo()]).then(res => {
+      setState({
+        bannar: res[0].figures,
+        card: res[1].cards,
+        easyInfo: res[2].essays
+      })
+    })
+  }, [])
+
   const $setVh = debonce((v) => {
     setVh(v);
   }, 1000);
@@ -64,8 +89,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <div id="app" ref={app}>
-        <Head vh={vh} showModel={showModel} />
-        <Component {...pageProps} vh={vh} />
+        <Head vh={vh} showModel={showModel} state={state} />
+        <Component {...pageProps} vh={vh} state={state} />
         <Footer vh={vh} />
       </div>
       <div

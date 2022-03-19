@@ -5,6 +5,6 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ["cdn.redrock.team"],
+    domains: ["cdn.redrock.team", 'redrock.feishu.cn'],
   },
 };
